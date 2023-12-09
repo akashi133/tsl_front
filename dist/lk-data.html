@@ -1,0 +1,70 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Мои данные</title><link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"/><link rel="manifest" href="img/site.webmanifest"/><link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5"/><meta name="msapplication-TileColor" content="#ffffff"/><meta name="theme-color" content="#ffffff"/><script defer="defer" src="./js/index.js?9589d9ba3c042e03e67c"></script><script defer="defer" src="./js/api.js?9589d9ba3c042e03e67c"></script><link href="./style/index.a40ac6ce5fadf3540f1b.css?9589d9ba3c042e03e67c" rel="stylesheet"></head><body data-controller="templateAuthCheck"><header data-controller="templateHeader"></header><main id="profileBox"><section class="main__baner-lk"><strong class="main__baner-title">Личный кабинет</strong></section><section class="lk-nav-top__section"><div class="container lk-nav-top__container"><ul class="lk-nav-top"><li class="lk-nav-top__item"><a class="lk-nav-top__link" href="index.html">Главная</a></li><li class="lk-nav-top__item"><a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a></li><li class="lk-nav-top__item"><a class="lk-nav-top__link" href="lk-data.html">Мои данные</a></li></ul></div></section><section class="lk__section"><div class="container lk__container"><div class="lk__container-col"><div class="lk-nav__box" data-controller="templateLkNav"></div></div><div class="lk__container-col lk-col__data" data-controller="lkProfile"><div class="lk-container__header"><div class="lk-container__header_left"><h4 class="lk__title">ID:</h4><div class="lk__title-name" id="profileId"></div></div><div class="lk-container__header_right"><div class="lk-date__row">Дата добавления: <span id="profileDate"></span></div></div></div><form class="form-adding lk-profile__form needs-validation" id="profileUserForm" novalidate><fieldset class="row col-sm-12 col-md-12 mt-4"><legend>Личные данные</legend><div class="col-sm-18 col-md-18 mb-4"><label class="form-label" for="profileName">* Имя и фамилия</label> <input name="fio" id="profileName" class="form-control" required="" value=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div><div class="col-sm-12 col-md-6 mb-4"><label class="form-label" for="profileEmail">* Email</label> <input type="email" name="email" id="profileEmail" class="form-control" required="" value=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div><div class="col-sm-12 col-md-6 mb-5"><label class="form-label" for="profilePhone">* Контактный телефон</label> <input type="tel" name="phone" id="profilePhone" class="form-control" required="" value=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div><div class="col-sm-12 col-md-12 mb-5"><button type="button" class="adding__dtn lk-profile__btn" data-action="click->lkProfile#UserSaveChange">Сохранить</button></div></fieldset></form><form class="form-adding lk-profile__form needs-validation" id="profileChangePassword" novalidate><legend>Изменить пароль</legend><fieldset class="row col-sm-12 col-md-12 mt-4" id="changePassBox"><div class="cold-sm-18"><div class="col-sm-12 col-md-6 mb-4"><label class="form-label" for="profilePassw">* Текущий пароль</label> <input type="password" name="lk_password" id="profilePassw" class="form-control" placeholder="Введите пароль" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div></div><div class="col-sm-12 col-md-6 mb-4 form-adding-pass"><label class="form-label" for="profilePassNewRepeat"></label> * Новый пароль (только латиница) <input type="password" name="lk_password_new_repeat" id="profilePassNewRepeat" class="form-control showpass" autocomplete="off" value="" placeholder="Введите пароль" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div><span class="password-control" data-action="click->lkProfile#showPassRepeat"></span><ul class="info-password-check" id="info-password-check"><li id="letter">Минимум <strong>одна буква</strong></li><li id="capital">Минимум <strong>одна заглавная буква</strong></li><li id="number">Минимум <strong>одна цифра</strong></li><li id="length">Не менее <strong>8 символов</strong></li></ul><div class="pass-match"></div></div><div class="col-sm-12 col-md-6 mb-5 form-adding-pass"><label class="form-label" for="profilePassNew">* Повторите новый пароль</label> <input type="password" name="lk_password_new" id="profilePassNew" class="form-control showpass" autocomplete="off" value="" placeholder="Введите пароль" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div><div class="invalid-feedback" id="capital">только латинские буквы</div><div class="invalid-feedback" id="length">не менее восьми символов</div><div class="invalid-feedback" id="number">хотя-бы одна цифра</div><span class="password-control" data-action="click->lkProfile#showPass"></span></div><div class="col-sm-12 col-md-12"><button type="button" class="adding__dtn lk-profile__btn" data-action="click->lkProfile#passwordNew">Сохранить</button></div></fieldset></form><div class="form-adding lk-profile__form"><p>После удаления аккаунта:</p><ul class="marked"><li>Восстановить аккаунт невозможно</li><li>Все привязанные к аккаунту объявления удаляются</li><li>Все привязанные к аккаунту компании и сотрудники этих компаний удаляются</li><li>Объявления, созданные сотрудниками удаленной компании удаляются</li></ul><div class="lk-btn__row"><a href="#popup-delete" class="lk__btn lk__btn-del" data-bs-toggle="modal" data-bs-target="#popup-delete">Удалить аккаунт</a><div class="modal fade" id="popup-delete" tabindex="-1" aria-labelledby="popup-delete" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Вы уверены, что ходите удалить аккаунт?</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><p>После удаления аккаунта:</p><ul class="marked"><li>Восстановить аккаунт невозможно</li><li>Все привязанные к аккаунту объявления удаляются</li><li>Все привязанные к аккаунту компании и сотрудники этих компаний удаляются</li><li>Объявления, созданные сотрудниками удаленной компании удаляются</li></ul><div class="container lk__container lk__container-center"><button type="button" class="lk__btn lk__btn--no" data-bs-dismiss="modal">НЕ ХОЧУ УДАЛЯТЬ АККАУНТ</button><div class="col-sm-6"><input type="button" value="Удалить" class="lk__btn lk__btn-del" data-bs-dismiss="modal" data-action="click->lkProfile#userDelete"/></div></div></div></div></div></div></div></div></div></div></section></main><footer data-controller="templateFooter"></footer><script src="https://cdn.skypack.dev/stimulus@2.0.0"></script><script>document.addEventListener('DOMContentLoaded', function () {
+                // Функция для проверки сложности пароля и обновления списка проверки
+                function checkPasswordStrength(password, listElement) {
+                    var letterRegex = /[a-z]/;
+                    var capitalRegex = /[A-Z]/;
+                    var numberRegex = /[0-9]/;
+
+                    var isLetterValid = letterRegex.test(password);
+                    var isCapitalValid = capitalRegex.test(password);
+                    var isNumberValid = numberRegex.test(password);
+                    var isLengthValid = password.length >= 8;
+
+                    // Обновляем стили для каждого пункта проверки
+                    listElement.querySelector('#letter').classList.toggle('valid', isLetterValid);
+                    listElement.querySelector('#capital').classList.toggle('valid', isCapitalValid);
+                    listElement.querySelector('#number').classList.toggle('valid', isNumberValid);
+                    listElement.querySelector('#length').classList.toggle('valid', isLengthValid);
+
+                    // Показываем или скрываем сообщения об ошибке
+                    listElement.querySelectorAll('.invalid-feedback').forEach(function (feedback) {
+                        feedback.style.display = 'none';
+                    });
+
+                    if (!isLetterValid) {
+                        listElement.querySelector('.invalid-feedback:nth-child(2)').style.display =
+                            'block';
+                    }
+                    if (!isLengthValid) {
+                        listElement.querySelector('.invalid-feedback:nth-child(3)').style.display =
+                            'block';
+                    }
+                    if (!isNumberValid) {
+                        listElement.querySelector('.invalid-feedback:nth-child(4)').style.display =
+                            'block';
+                    }
+                }
+
+                var passwordInput = document.getElementById('profilePassNew');
+                var confirmPasswordInput = document.getElementById('profilePassNewRepeat');
+                var showPassTrigger = document.querySelector('.password-control');
+
+                showPassTrigger.addEventListener('click', function () {
+                    // При клике на элементе показа пароля меняем тип поля ввода
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        confirmPasswordInput.type = 'text'; // Добавлено для подтверждения пароля
+                    } else {
+                        passwordInput.type = 'password';
+                        confirmPasswordInput.type = 'password'; // Добавлено для подтверждения пароля
+                    }
+                });
+
+                // Добавлено для второго поля (Повторите новый пароль)
+                confirmPasswordInput.addEventListener('input', function () {
+                    var confirmPassword = confirmPasswordInput.value;
+                    var password = passwordInput.value;
+                    var passwordCheckList = document.getElementById('info-password-check');
+
+                    // Вызываем функцию проверки сложности пароля
+                    checkPasswordStrength(confirmPassword, passwordCheckList);
+
+                    // Проверяем совпадение паролей и выводим сообщение об ошибке при несовпадении
+                    var passMatchMessage = document.querySelector('.pass-match');
+                    if (confirmPassword !== password) {
+                        passMatchMessage.textContent = 'Пароли не совпадают';
+                    } else {
+                        passMatchMessage.textContent = '';
+                    }
+                });
+            });</script></body></html>

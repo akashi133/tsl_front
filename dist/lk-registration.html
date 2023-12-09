@@ -1,0 +1,87 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Регистрация</title><link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"/><link rel="manifest" href="img/site.webmanifest"/><link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5"/><meta name="msapplication-TileColor" content="#ffffff"/><meta name="theme-color" content="#ffffff"/><script defer="defer" src="./js/index.js?9589d9ba3c042e03e67c"></script><script defer="defer" src="./js/api.js?9589d9ba3c042e03e67c"></script><link href="./style/index.a40ac6ce5fadf3540f1b.css?9589d9ba3c042e03e67c" rel="stylesheet"></head><body id="int-phone"><header data-controller="templateHeader"></header><main><section class="main__baner main__baner-adding-cargo"><div class="container"><h2 class="main__baner-title">Регистрация</h2></div></section><section class="adding-carg__section"><div class="container"><div class="container-adding"><div class="col-sm-12" id="form-request-box"></div><div class="form-adding col-sm-7"><p class="form-adding__text">Поля, отмеченные <span class="form-adding__text_red">*</span> обязательны для заполнения</p><div data-controller="lkRegistration"><form id="tsl-registration" class="needs-validation" novalidate><fieldset class="row mb-3"><label for="info-fio" class="col-sm-12 col-form-label">* Ваши имя и фамилия</label><div class="col-sm-12"><input class="form-control" id="info-fio" placeholder="Как к вам обращаться" name="fio" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div></fieldset><fieldset class="row mb-3"><label for="info-email" class="col-sm-12 col-form-label">* Email (Будет вашим логином)</label><div class="col-sm-12"><input type="email" class="form-control" id="info-email" placeholder="Ваш контактный email" name="email" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div></fieldset><fieldset class="row mb-3"><label for="info-phone" class="col-sm-12 col-form-label">* Ваш телефон</label><div class="row phone-code-box"><div class="phone-code-state"><select id="info-country-list"><option value="one">выберите страну</option><option value="germany">Германия</option><option value="china">Китай</option><option value="brazil">Бразилия</option></select><div id="info-phone-box" class="info-phone-box-data"></div></div><div class="phone-code-num"><input type="number" class="form-control phone-num" id="info-phone" name="phone" required=""/><div class="invalid-feedback">Пожалуйста, заполните поле</div></div></div></fieldset><fieldset class="row mb-3"><label for="info-password" class="col-sm-12 col-form-label">* Ваш пароль (только латиница)</label><ul class="info-password-check" id="info-password-check"><li id="letter">Минимум <strong>одна буква</strong></li><li id="capital">Минимум <strong>одна заглавная буква</strong></li><li id="number">Минимум <strong>одна цифра</strong></li><li id="length">Не менее <strong>8 символов</strong></li></ul><div class="col-sm-12 form-adding-pass"><input type="password" class="form-control showpass" id="info-password" autocomplete="off" placeholder="Ваш пароль" value="" name="pass" required="" data-lkregistration-target="password"/><div class="invalid-feedback">Пожалуйста, заполните поле</div><div class="invalid-feedback">Tолько латинские буквы</div><div class="invalid-feedback">не менее восьми символов</div><div class="invalid-feedback">хотя-бы одна цифра</div><span class="password-control password-control--reg" data-action="click->lkRegistration#showPass"></span></div></fieldset><fieldset class="row mb-3"><label for="info-password" class="col-sm-12 col-form-label">* Подвердите Ваш пароль</label><div class="col-sm-12 form-adding-pass"><input type="password" class="form-control showpass" id="info-password-add" autocomplete="off" placeholder="Ваш пароль" value="" name="passadd" required="" data-lkregistration-target="passwordadd"/><div class="invalid-feedback">Пожалуйста, заполните поле</div><span class="password-control password-control--reg" data-action="click->lkRegistration#showPassAdd"></span><div class="pass-match"></div></div></fieldset><fieldset class="row mb-3"><div class="form-checkbox__col"><div class="adding__checkbox mt-3"><input type="checkbox" name="conditions" id="conditions" value="conditions" data-action="click->lkRegistration#conditions"/> <label for="conditions" class="checkbox__lable">Я соглашаюсь с <a class="default-link" href="info-conditions.html">условиями использования</a></label></div></div></fieldset><fieldset class="row mb-3"><div class="col-sm-12"><button class="adding__dtn adding__dtn--lk" id="lk-reg" type="button" data-action="click->lkRegistration#registration">Зарегистрироваться</button></div></fieldset></form></div></div></div></div></section></main><footer data-controller="templateFooter"></footer></body><script src="https://cdn.jsdelivr.net/npm/stimulus@2.0.0/dist/stimulus.umd.min.js"></script><script src="https://code.jquery.com/jquery-3.6.4.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
+            // Функция для проверки сложности пароля и обновления списка проверки
+            function checkPasswordStrength(password, listElement) {
+                var letterRegex = /[a-z]/;
+                var capitalRegex = /[A-Z]/;
+                var numberRegex = /[0-9]/;
+
+                var isLetterValid = letterRegex.test(password);
+                var isCapitalValid = capitalRegex.test(password);
+                var isNumberValid = numberRegex.test(password);
+                var isLengthValid = password.length >= 8;
+
+                // Обновляем стили для каждого пункта проверки
+                listElement.querySelector('#letter').classList.toggle('valid', isLetterValid);
+                listElement.querySelector('#capital').classList.toggle('valid', isCapitalValid);
+                listElement.querySelector('#number').classList.toggle('valid', isNumberValid);
+                listElement.querySelector('#length').classList.toggle('valid', isLengthValid);
+
+                // Показываем или скрываем сообщения об ошибке
+                listElement.querySelectorAll('.invalid-feedback').forEach(function (feedback) {
+                    feedback.style.display = 'none';
+                });
+
+                if (!isLetterValid) {
+                    listElement.querySelector('.invalid-feedback:nth-child(2)').style.display =
+                        'block';
+                }
+                if (!isLengthValid) {
+                    listElement.querySelector('.invalid-feedback:nth-child(3)').style.display =
+                        'block';
+                }
+                if (!isNumberValid) {
+                    listElement.querySelector('.invalid-feedback:nth-child(4)').style.display =
+                        'block';
+                }
+            }
+
+            var passwordInput = document.getElementById('info-password');
+            var confirmPasswordInput = document.getElementById('info-password-add');
+            var showPassTrigger = document.querySelector('.password-control--reg');
+
+            showPassTrigger.addEventListener('click', function () {
+                // При клике на элементе показа пароля меняем тип поля ввода
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    confirmPasswordInput.type = 'text'; // Добавлено для подтверждения пароля
+                } else {
+                    passwordInput.type = 'password';
+                    confirmPasswordInput.type = 'password'; // Добавлено для подтверждения пароля
+                }
+            });
+
+            // Добавлено для второго поля (Подтвердите Ваш пароль)
+            confirmPasswordInput.addEventListener('input', function () {
+                var confirmPassword = confirmPasswordInput.value;
+                var password = passwordInput.value;
+                var passwordCheckList = document.getElementById('info-password-check');
+
+                // Вызываем функцию проверки сложности пароля
+                checkPasswordStrength(confirmPassword, passwordCheckList);
+
+                // Проверяем совпадение паролей и выводим сообщение об ошибке при несовпадении
+                var passMatchMessage = document.querySelector('.pass-match');
+                if (confirmPassword !== password) {
+                    passMatchMessage.textContent = 'Пароли не совпадают';
+                } else {
+                    passMatchMessage.textContent = '';
+                }
+            });
+        });
+        $(document).ready(function () {
+            // Объект с кодами стран
+            var countryCodes = {
+                one: '',
+                germany: '+49', // Код для Германии
+                china: '+86', // Код для Китая
+                brazil: '+55', // Код для Бразилии
+                // Добавьте другие страны и соответствующие коды
+            };
+
+            // Обработчик изменения выбора страны
+            $('#info-country-list').change(function () {
+                var selectedCountry = $(this).val();
+                var countryCode = countryCodes[selectedCountry];
+                $('#info-phone-box').text(countryCode);
+            });
+        });</script></html>
